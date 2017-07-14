@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dark.dao.first.PmsCommodityMapper" >
+  <resultMap id="BaseResultMap" type="com.dark.entity.PmsCommodity" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="commodity_code" property="commodityCode" jdbcType="VARCHAR" />
+    <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    <result column="category_code" property="categoryCode" jdbcType="VARCHAR" />
+    <result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
+    <result column="commodity_brand_value" property="commodityBrandValue" jdbcType="VARCHAR" />
+    <result column="commodity_brand_name" property="commodityBrandName" jdbcType="VARCHAR" />
+    <result column="commodity_unit_code" property="commodityUnitCode" jdbcType="VARCHAR" />
+    <result column="commodity_unit_name" property="commodityUnitName" jdbcType="VARCHAR" />
+    <result column="commodity_status" property="commodityStatus" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="last_update_date" property="lastUpdateDate" jdbcType="TIMESTAMP" />
+    <result column="product_temperature_zone_name" property="productTemperatureZoneName" jdbcType="VARCHAR" />
+    <result column="product_temperature_zone_code" property="productTemperatureZoneCode" jdbcType="VARCHAR" />
+    <result column="product_code" property="productCode" jdbcType="VARCHAR" />
+    <result column="commodity_taxrate_name" property="commodityTaxrateName" jdbcType="VARCHAR" />
+    <result column="commodity_taxrate_value" property="commodityTaxrateValue" jdbcType="INTEGER" />
+    <result column="commodity_GS1_code" property="commodityGs1Code" jdbcType="VARCHAR" />
+    <result column="commodity_show_name" property="commodityShowName" jdbcType="VARCHAR" />
+    <result column="commodity_price" property="commodityPrice" jdbcType="DOUBLE" />
+    <result column="commodity_sale_price" property="commoditySalePrice" jdbcType="DOUBLE" />
+    <result column="commodity_sale_num" property="commoditySaleNum" jdbcType="INTEGER" />
+    <result column="commodity_quantity" property="commodityQuantity" jdbcType="INTEGER" />
+    <result column="commodity_weight" property="commodityWeight" jdbcType="DOUBLE" />
+    <result column="commodity_comment" property="commodityComment" jdbcType="VARCHAR" />
+    <result column="product_quantity" property="productQuantity" jdbcType="INTEGER" />
+    <result column="commodity_search_property" property="commoditySearchProperty" jdbcType="VARCHAR" />
+    <result column="commodity_shelf_life" property="commodityShelfLife" jdbcType="VARCHAR" />
+    <result column="commodity_shelf_life_name" property="commodityShelfLifeName" jdbcType="VARCHAR" />
+    <result column="commodity_shelf_life_value" property="commodityShelfLifeValue" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, commodity_code, category_name, category_code, commodity_name, commodity_brand_value, 
+    commodity_brand_name, commodity_unit_code, commodity_unit_name, commodity_status, 
+    create_date, last_update_date, product_temperature_zone_name, product_temperature_zone_code, 
+    product_code, commodity_taxrate_name, commodity_taxrate_value, commodity_GS1_code, 
+    commodity_show_name, commodity_price, commodity_sale_price, commodity_sale_num, commodity_quantity, 
+    commodity_weight, commodity_comment, product_quantity, commodity_search_property, 
+    commodity_shelf_life, commodity_shelf_life_name, commodity_shelf_life_value
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from pms_commodity
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from pms_commodity
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.dark.entity.PmsCommodity" >
+    insert into pms_commodity (id, commodity_code, category_name, 
+      category_code, commodity_name, commodity_brand_value, 
+      commodity_brand_name, commodity_unit_code, 
+      commodity_unit_name, commodity_status, create_date, 
+      last_update_date, product_temperature_zone_name, 
+      product_temperature_zone_code, product_code, 
+      commodity_taxrate_name, commodity_taxrate_value, 
+      commodity_GS1_code, commodity_show_name, commodity_price, 
+      commodity_sale_price, commodity_sale_num, commodity_quantity, 
+      commodity_weight, commodity_comment, product_quantity, 
+      commodity_search_property, commodity_shelf_life, 
+      commodity_shelf_life_name, commodity_shelf_life_value
+      )
+    values (#{id,jdbcType=BIGINT}, #{commodityCode,jdbcType=VARCHAR}, #{categoryName,jdbcType=VARCHAR}, 
+      #{categoryCode,jdbcType=VARCHAR}, #{commodityName,jdbcType=VARCHAR}, #{commodityBrandValue,jdbcType=VARCHAR}, 
+      #{commodityBrandName,jdbcType=VARCHAR}, #{commodityUnitCode,jdbcType=VARCHAR}, 
+      #{commodityUnitName,jdbcType=VARCHAR}, #{commodityStatus,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{lastUpdateDate,jdbcType=TIMESTAMP}, #{productTemperatureZoneName,jdbcType=VARCHAR}, 
+      #{productTemperatureZoneCode,jdbcType=VARCHAR}, #{productCode,jdbcType=VARCHAR}, 
+      #{commodityTaxrateName,jdbcType=VARCHAR}, #{commodityTaxrateValue,jdbcType=INTEGER}, 
+      #{commodityGs1Code,jdbcType=VARCHAR}, #{commodityShowName,jdbcType=VARCHAR}, #{commodityPrice,jdbcType=DOUBLE}, 
+      #{commoditySalePrice,jdbcType=DOUBLE}, #{commoditySaleNum,jdbcType=INTEGER}, #{commodityQuantity,jdbcType=INTEGER}, 
+      #{commodityWeight,jdbcType=DOUBLE}, #{commodityComment,jdbcType=VARCHAR}, #{productQuantity,jdbcType=INTEGER}, 
+      #{commoditySearchProperty,jdbcType=VARCHAR}, #{commodityShelfLife,jdbcType=VARCHAR}, 
+      #{commodityShelfLifeName,jdbcType=VARCHAR}, #{commodityShelfLifeValue,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dark.entity.PmsCommodity" >
+    insert into pms_commodity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="commodityCode != null" >
+        commodity_code,
+      </if>
+      <if test="categoryName != null" >
+        category_name,
+      </if>
+      <if test="categoryCode != null" >
+        category_code,
+      </if>
+      <if test="commodityName != null" >
+        commodity_name,
+      </if>
+      <if test="commodityBrandValue != null" >
+        commodity_brand_value,
+      </if>
+      <if test="commodityBrandName != null" >
+        commodity_brand_name,
+      </if>
+      <if test="commodityUnitCode != null" >
+        commodity_unit_code,
+      </if>
+      <if test="commodityUnitName != null" >
+        commodity_unit_name,
+      </if>
+      <if test="commodityStatus != null" >
+        commodity_status,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="lastUpdateDate != null" >
+        last_update_date,
+      </if>
+      <if test="productTemperatureZoneName != null" >
+        product_temperature_zone_name,
+      </if>
+      <if test="productTemperatureZoneCode != null" >
+        product_temperature_zone_code,
+      </if>
+      <if test="productCode != null" >
+        product_code,
+      </if>
+      <if test="commodityTaxrateName != null" >
+        commodity_taxrate_name,
+      </if>
+      <if test="commodityTaxrateValue != null" >
+        commodity_taxrate_value,
+      </if>
+      <if test="commodityGs1Code != null" >
+        commodity_GS1_code,
+      </if>
+      <if test="commodityShowName != null" >
+        commodity_show_name,
+      </if>
+      <if test="commodityPrice != null" >
+        commodity_price,
+      </if>
+      <if test="commoditySalePrice != null" >
+        commodity_sale_price,
+      </if>
+      <if test="commoditySaleNum != null" >
+        commodity_sale_num,
+      </if>
+      <if test="commodityQuantity != null" >
+        commodity_quantity,
+      </if>
+      <if test="commodityWeight != null" >
+        commodity_weight,
+      </if>
+      <if test="commodityComment != null" >
+        commodity_comment,
+      </if>
+      <if test="productQuantity != null" >
+        product_quantity,
+      </if>
+      <if test="commoditySearchProperty != null" >
+        commodity_search_property,
+      </if>
+      <if test="commodityShelfLife != null" >
+        commodity_shelf_life,
+      </if>
+      <if test="commodityShelfLifeName != null" >
+        commodity_shelf_life_name,
+      </if>
+      <if test="commodityShelfLifeValue != null" >
+        commodity_shelf_life_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="commodityCode != null" >
+        #{commodityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null" >
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryCode != null" >
+        #{categoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityName != null" >
+        #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityBrandValue != null" >
+        #{commodityBrandValue,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityBrandName != null" >
+        #{commodityBrandName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityUnitCode != null" >
+        #{commodityUnitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityUnitName != null" >
+        #{commodityUnitName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityStatus != null" >
+        #{commodityStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateDate != null" >
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productTemperatureZoneName != null" >
+        #{productTemperatureZoneName,jdbcType=VARCHAR},
+      </if>
+      <if test="productTemperatureZoneCode != null" >
+        #{productTemperatureZoneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null" >
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityTaxrateName != null" >
+        #{commodityTaxrateName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityTaxrateValue != null" >
+        #{commodityTaxrateValue,jdbcType=INTEGER},
+      </if>
+      <if test="commodityGs1Code != null" >
+        #{commodityGs1Code,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityShowName != null" >
+        #{commodityShowName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityPrice != null" >
+        #{commodityPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="commoditySalePrice != null" >
+        #{commoditySalePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="commoditySaleNum != null" >
+        #{commoditySaleNum,jdbcType=INTEGER},
+      </if>
+      <if test="commodityQuantity != null" >
+        #{commodityQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="commodityWeight != null" >
+        #{commodityWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="commodityComment != null" >
+        #{commodityComment,jdbcType=VARCHAR},
+      </if>
+      <if test="productQuantity != null" >
+        #{productQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="commoditySearchProperty != null" >
+        #{commoditySearchProperty,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityShelfLife != null" >
+        #{commodityShelfLife,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityShelfLifeName != null" >
+        #{commodityShelfLifeName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityShelfLifeValue != null" >
+        #{commodityShelfLifeValue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dark.entity.PmsCommodity" >
+    update pms_commodity
+    <set >
+      <if test="commodityCode != null" >
+        commodity_code = #{commodityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null" >
+        category_name = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryCode != null" >
+        category_code = #{categoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityName != null" >
+        commodity_name = #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityBrandValue != null" >
+        commodity_brand_value = #{commodityBrandValue,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityBrandName != null" >
+        commodity_brand_name = #{commodityBrandName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityUnitCode != null" >
+        commodity_unit_code = #{commodityUnitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityUnitName != null" >
+        commodity_unit_name = #{commodityUnitName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityStatus != null" >
+        commodity_status = #{commodityStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateDate != null" >
+        last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productTemperatureZoneName != null" >
+        product_temperature_zone_name = #{productTemperatureZoneName,jdbcType=VARCHAR},
+      </if>
+      <if test="productTemperatureZoneCode != null" >
+        product_temperature_zone_code = #{productTemperatureZoneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null" >
+        product_code = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityTaxrateName != null" >
+        commodity_taxrate_name = #{commodityTaxrateName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityTaxrateValue != null" >
+        commodity_taxrate_value = #{commodityTaxrateValue,jdbcType=INTEGER},
+      </if>
+      <if test="commodityGs1Code != null" >
+        commodity_GS1_code = #{commodityGs1Code,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityShowName != null" >
+        commodity_show_name = #{commodityShowName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityPrice != null" >
+        commodity_price = #{commodityPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="commoditySalePrice != null" >
+        commodity_sale_price = #{commoditySalePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="commoditySaleNum != null" >
+        commodity_sale_num = #{commoditySaleNum,jdbcType=INTEGER},
+      </if>
+      <if test="commodityQuantity != null" >
+        commodity_quantity = #{commodityQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="commodityWeight != null" >
+        commodity_weight = #{commodityWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="commodityComment != null" >
+        commodity_comment = #{commodityComment,jdbcType=VARCHAR},
+      </if>
+      <if test="productQuantity != null" >
+        product_quantity = #{productQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="commoditySearchProperty != null" >
+        commodity_search_property = #{commoditySearchProperty,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityShelfLife != null" >
+        commodity_shelf_life = #{commodityShelfLife,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityShelfLifeName != null" >
+        commodity_shelf_life_name = #{commodityShelfLifeName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityShelfLifeValue != null" >
+        commodity_shelf_life_value = #{commodityShelfLifeValue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dark.entity.PmsCommodity" >
+    update pms_commodity
+    set commodity_code = #{commodityCode,jdbcType=VARCHAR},
+      category_name = #{categoryName,jdbcType=VARCHAR},
+      category_code = #{categoryCode,jdbcType=VARCHAR},
+      commodity_name = #{commodityName,jdbcType=VARCHAR},
+      commodity_brand_value = #{commodityBrandValue,jdbcType=VARCHAR},
+      commodity_brand_name = #{commodityBrandName,jdbcType=VARCHAR},
+      commodity_unit_code = #{commodityUnitCode,jdbcType=VARCHAR},
+      commodity_unit_name = #{commodityUnitName,jdbcType=VARCHAR},
+      commodity_status = #{commodityStatus,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      product_temperature_zone_name = #{productTemperatureZoneName,jdbcType=VARCHAR},
+      product_temperature_zone_code = #{productTemperatureZoneCode,jdbcType=VARCHAR},
+      product_code = #{productCode,jdbcType=VARCHAR},
+      commodity_taxrate_name = #{commodityTaxrateName,jdbcType=VARCHAR},
+      commodity_taxrate_value = #{commodityTaxrateValue,jdbcType=INTEGER},
+      commodity_GS1_code = #{commodityGs1Code,jdbcType=VARCHAR},
+      commodity_show_name = #{commodityShowName,jdbcType=VARCHAR},
+      commodity_price = #{commodityPrice,jdbcType=DOUBLE},
+      commodity_sale_price = #{commoditySalePrice,jdbcType=DOUBLE},
+      commodity_sale_num = #{commoditySaleNum,jdbcType=INTEGER},
+      commodity_quantity = #{commodityQuantity,jdbcType=INTEGER},
+      commodity_weight = #{commodityWeight,jdbcType=DOUBLE},
+      commodity_comment = #{commodityComment,jdbcType=VARCHAR},
+      product_quantity = #{productQuantity,jdbcType=INTEGER},
+      commodity_search_property = #{commoditySearchProperty,jdbcType=VARCHAR},
+      commodity_shelf_life = #{commodityShelfLife,jdbcType=VARCHAR},
+      commodity_shelf_life_name = #{commodityShelfLifeName,jdbcType=VARCHAR},
+      commodity_shelf_life_value = #{commodityShelfLifeValue,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

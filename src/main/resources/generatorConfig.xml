@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+    "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+    "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+    <generatorConfiguration>
+        <classPathEntry
+                location="D:\work\maven\mysql\mysql-connector-java\5.1.29\mysql-connector-java-5.1.29.jar" />
+        <context id="context1" targetRuntime="MyBatis3">
+            <commentGenerator>
+                <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+                <property name="suppressAllComments" value="true" />
+                <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+            </commentGenerator>
+            <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                            connectionURL="jdbc:mysql://10.8.48.234:3308/tms?useUnicode=true&amp;characterEncoding=UTF-8"
+                            userId="spfood" password="SPfood123#" />
+            <javaModelGenerator targetPackage="com.dark.entity"
+                                targetProject="F:\test\springboot-mulit-datasource-demo\src\main\java" />
+            <sqlMapGenerator targetPackage="second"
+                             targetProject="F:\test\springboot-mulit-datasource-demo\src\main\resources\mapper" />
+            <javaClientGenerator targetPackage="com.dark.dao.second"
+                                 targetProject="F:\test\springboot-mulit-datasource-demo\src\main\java" type="XMLMAPPER" />
+            <!-- shema 数据库 tableName表明 -->
+            <table schema="pws" tableName="tms_drivers"  enableCountByExample="false"
+                   enableUpdateByExample="false"
+                   enableDeleteByExample="false"
+                   enableSelectByExample="false"
+                   selectByExampleQueryId="false" />
+
+        </context>
+</generatorConfiguration>
